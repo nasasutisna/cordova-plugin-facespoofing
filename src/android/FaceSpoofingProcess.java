@@ -46,10 +46,10 @@ public class FaceSpoofingProcess extends Activity {
     this.antiSpoofing(mBitmap);
   }
 
-  private void antiSpoofing(Bitmap mBitmap) {
+ private void antiSpoofing(Bitmap mBitmap) {
     if (mBitmap == null) {
       this.error = true;
-      this.message = "Harap deteksi wajah terlebih dahulu";
+      this.message = "Please detect face first";
       this.response();
       return;
     }
@@ -59,7 +59,7 @@ public class FaceSpoofingProcess extends Activity {
 
     if (boxes1.size() == 0) {
       this.error = true;
-      this.message = "Tidak ada wajah yang terdeteksi";
+      this.message = "No faces detected";
       this.response();
       return;
     }
@@ -70,7 +70,7 @@ public class FaceSpoofingProcess extends Activity {
 
     if (boxes1.size() == 0) {
       this.error = true;
-      this.message = "Tidak ada wajah yang terdeteksi";
+      this.message = "No faces detected";
       this.response();
       return;
     }
@@ -95,16 +95,15 @@ public class FaceSpoofingProcess extends Activity {
         this.score = "" + score2;
         this.threshold = "" + FaceAntiSpoofing.THRESHOLD;
         this.liveness = true;
+        this.message = "";
       } else {
         this.error = false;
         this.score = "" + score2;
         this.threshold = "" + FaceAntiSpoofing.THRESHOLD;
         this.liveness = false;
+        this.message = "Sorry, you are indicated to be face spoofing";
       }
     }
-
-    this.response();
-  }
 
   private void response() {
     JSONObject obj = new JSONObject();
